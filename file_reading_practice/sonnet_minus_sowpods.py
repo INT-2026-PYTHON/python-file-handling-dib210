@@ -58,3 +58,33 @@ After sorting -> ['a', 'compare', 'i', 'to'].
 =================================================
 
 """
+sowpods_set = set()
+
+file1 = open("sowpods.txt", "r")
+
+for word in file1:
+    word = word.strip().lower()
+    sowpods_set.add(word)
+
+file1.close()
+
+
+sonnet_set = set()
+
+file2 = open("sonnet_words.txt", "r")
+
+for word in file2:
+    word = word.strip().lower()
+    sonnet_set.add(word)
+
+file2.close()
+
+
+result = sorted(sonnet_set - sowpods_set)
+
+print("Words in sonnet but not in sowpods:")
+
+for word in result:
+    print(word)
+
+print("Total:", len(result))
