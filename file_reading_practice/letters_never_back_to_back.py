@@ -53,3 +53,25 @@ Sorted -> ['b', 'd', 'e', 'h', 'k', 'm', 'n',
 =================================================
 
 """
+
+seen = set()
+doubled = set()
+
+file = open("sowpods.txt", "r")
+
+for word in file:
+    word = word.strip().lower()
+
+    for ch in word:
+        seen.add(ch)
+
+    for i in range(len(word) - 1):
+        if word[i] == word[i + 1]:
+            doubled.add(word[i])
+
+file.close()
+
+answer = sorted(seen - doubled)
+
+print("Letters that never appear back-to-back:")
+print(answer)
